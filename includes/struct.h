@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:27:24 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 18:06:12 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 12:43:18 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_rgb
 
 typedef struct s_txt
 {
-    char    *path_nswe;
     void	*img;
 	char	*addr;
 	int		bpp;
@@ -77,7 +76,10 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	char	**file;
+    char    **path_nswe;
     int     txt_index;
+	int		txt_width;
+	int		txt_height;
 	t_img	img;
 	t_map	map;
 	t_data	data;

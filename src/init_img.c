@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:41:14 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 18:06:49 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:01:29 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ void	init_trgb(t_rgb *trgb)
 
 void   init_txt(t_txt *txt)
 {
-    txt = (t_txt *)malloc(sizeof(t_txt) * 4);
-    txt->path_nswe = NULL;
-    txt->img = NULL;
-    txt->addr = NULL;
     txt->bpp = 0;
     txt->endian = 0;
     txt->line_len = 0;
@@ -56,12 +52,25 @@ void	init_data(t_data *data)
 
 void    init_struct(t_game *game)
 {
+    int i;
     game->mlx = NULL;
     game->win = NULL;
     game->file = NULL;
     game->txt_index = 0;
+    game->txt_width = 0;
+    game->txt_height = 0;
     init_img(&game->img);
+    if ((game->txt = (t_txt *)malloc(sizeof(t_txt) * 4)) == NULL)
+        file_failure(game, "malloc failed for txt");
     init_txt(game->txt);
+    i = -1;
+    game->path_nswe = NULL;
+    while (++i < 4)
+    {
+        //game->path_nswe[i] = NULL;
+        game->txt[i].img = NULL;
+        game->txt[i].addr = NULL;
+    }
 	init_data(&game->data);
 	init_trgb(&game->ceiling);
 	init_trgb(&game->floor);

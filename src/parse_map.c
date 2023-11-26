@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/24 18:36:36 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:25:29 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	get_map(t_game *game)
 	}
 	if (i < 7)
 		file_failure(game, "map not a the end\n");
-
 	game->data.map = malloc(sizeof(char *) * (map_line(&game->file[i]) + 1));
 	if (!game->data.map)
 		file_failure(game, "malloc failure\n");

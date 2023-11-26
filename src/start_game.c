@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:31:41 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 17:09:23 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:06:20 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    init_window(t_game *game)
     game->mlx = mlx_init();
     if (!game->mlx)
         ft_error("mlx_init() failed\n");
+    //init_texture_files(game); //open xpm files
     game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D");
     if (!game->win)
     {

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 18:08:33 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:16:09 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void    get_texture(t_game *game)
     int j;
     char **strs;
     
+    if ((game->path_nswe = (char **)malloc(sizeof(char *) * 4)) == NULL)
+        file_failure(game, "malloc failed for path_nswe");
     i = 0;
     while (game->file[i])
     {
@@ -26,23 +28,19 @@ void    get_texture(t_game *game)
         while (strs[j])
         {
             if (strs[j][0] == 'N' && strs[j][1] == 'O')
-                game->txt[game->txt_index].path_nswe = ft_strdup(strs[j + 1]);
+                game->path_nswe[game->txt_index] = ft_strdup(strs[j + 1]);
             else if (strs[j][0] == 'S' && strs[j][1] == 'O')
-                game->txt[game->txt_index].path_nswe = ft_strdup(strs[j + 1]);
+                game->path_nswe[game->txt_index] = ft_strdup(strs[j + 1]);
             else if (strs[j][0] == 'W' && strs[j][1] == 'E')
-                game->txt[game->txt_index].path_nswe = ft_strdup(strs[j + 1]);
+                game->path_nswe[game->txt_index] = ft_strdup(strs[j + 1]);
             else if (strs[j][0] == 'E' && strs[j][1] == 'A')
-                 game->txt[game->txt_index].path_nswe= ft_strdup(strs[j + 1]);
-            game->txt_index++;
+                game->path_nswe[game->txt_index]= ft_strdup(strs[j + 1]);
             j++;
         }
+        game->txt_index++;
         free_line(strs);
         i++;
     }
-    printf("game->txt[NO].path_nswe: %s\n", game->txt[0].path_nswe);
-    printf("game->txt[SO].path_nswe: %s\n", game->txt[1].path_nswe);
-    printf("game->txt[WE].path_nswe: %s\n", game->txt[2].path_nswe);
-    printf("game->txt[EA].path_nswe: %s\n", game->txt[3].path_nswe);
 }
 
 void    get_color(t_game *game)
@@ -75,5 +73,19 @@ void    get_color(t_game *game)
         }
         free_line(strs);
         i++;
+    }
+}
+
+void    init_texture_files(t_game *game)
+{
+    int i;
+
+    i = -1;
+    while (++i < 4)
+    {
+        game->txt[i].img = mlx_xpm_file_to_image(game->mlx, game->path_nswe[i], &game->txt[i].width, &game->txt[i].height);
+        if (game->txt[i].img == NULL)
+            file_failure(game, "texture file failure\n");
+        game->txt[i].addr = mlx_get_data_addr(game->txt[i].img, &game->txt[i].bpp, &game->txt[i].line_len, &game->txt[i].endian);
     }
 }

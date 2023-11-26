@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:44:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 15:19:41 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:37:27 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	destroy_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img.img);
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->img.img)
+		mlx_destroy_image(game->mlx, game->img.img);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	free_texture(game);
 	free_data(&game->data);
 	if (game->file)
         free_line(game->file);
@@ -25,11 +28,12 @@ void	destroy_game(t_game *game)
 
 void	file_failure(t_game *game, char *msg)
 {
-	if (game->file)
-        free_line(game->file);
 	if (game->mlx != NULL)
 		destroy_game(game);
+	free_texture(game);
 	free_data(&game->data);
+	if (game->file)
+        free_line(game->file);
 	ft_error(msg);
 }
 
@@ -59,4 +63,21 @@ void	free_data(t_data *data)
 		free(data->east);
 	if (data->map)
 		free_line(data->map);
+}
+
+void	free_texture(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->path_nswe[i])
+			free(game->path_nswe[i]);
+		if (game->txt[i].img)
+			mlx_destroy_image(game->mlx, game->txt[i].img);
+		i++;
+	}
+	free(game->path_nswe);
+	free(game->txt);
 }

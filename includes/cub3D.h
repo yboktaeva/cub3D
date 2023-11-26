@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/25 17:08:25 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:12:17 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void    check_args(int argc, char **argv);
 void    init_data(t_data *data);
 void    init_trgb(t_rgb *trgb);
 void    init_img(t_img *img);
+void    init_txt(t_txt *txt);
+void    init_texture_files(t_game *game);
+
 /*
  **PARSE
  */
@@ -58,6 +61,7 @@ int     ft_isspace(char c);
 int     rgb_to_hex(t_rgb rgb);
 void    draw_game(t_game *game);
 void    draw_floor_ceiling(t_game *game);
+void    draw_line(t_game *game, int w, float dist);
 //draw wall function (raycasting);
 /*
  **GAME
@@ -76,6 +80,7 @@ void    destroy_game(t_game *game);
 void	file_failure(t_game *game, char *msg);
 void	free_line(char **line);
 void	free_data(t_data *data);
+void	free_texture(t_game *game);
 /*
  **UTILS
  */
