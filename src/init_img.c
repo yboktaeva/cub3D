@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:41:14 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/26 13:01:29 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:49:32 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,35 @@ void	init_trgb(t_rgb *trgb)
 
 void   init_txt(t_txt *txt)
 {
+    txt->img = NULL;
     txt->bpp = 0;
     txt->endian = 0;
     txt->line_len = 0;
-    txt->width = 0;
-    txt->height = 0;
+    txt->width = 800;
+    txt->height = 800;
 }
 
 void	init_data(t_data *data)
 {
-	data->north = NULL;
-	data->south = NULL;
-	data->west = NULL;
-	data->east = NULL;
-	data->map = NULL;
 	data->ceiling_color = 0;
 	data->floor_color = 0;
+	data->map = NULL;
+    data->map_line = 0;
+	data->row_max = 0;
+}
+
+void	init_map(t_map *map)
+{
+	map->pos_x = 0;
+    map->pos_y = 0;
+    map->dir_x = 0;
+    map->dir_y = 0;
+    map->plane_x = 0;
+    map->plane_y = 0.66;
+    map->map_x = 0;
+    map->map_y = 0;
+    map->step_x = 0;
+    map->step_y = 0;
 }
 
 void    init_struct(t_game *game)
@@ -60,14 +73,14 @@ void    init_struct(t_game *game)
     game->txt_width = 0;
     game->txt_height = 0;
     init_img(&game->img);
+    init_map(&game->map);
     if ((game->txt = (t_txt *)malloc(sizeof(t_txt) * 4)) == NULL)
         file_failure(game, "malloc failed for txt");
+    game->path_nswe = NULL;
     init_txt(game->txt);
     i = -1;
-    game->path_nswe = NULL;
     while (++i < 4)
     {
-        //game->path_nswe[i] = NULL;
         game->txt[i].img = NULL;
         game->txt[i].addr = NULL;
     }

@@ -1,17 +1,15 @@
+NO textures/vertopal.com_Casse_brique_game_Maker_spr_mur_0.xpm
+SO textures/vertopal.com_Casse_brique_game_Maker_spr_mur_0.xpm
+WE textures/vertopal.com_Casse_brique_game_Maker_spr_mur_0.xpm
+EA textures/vertopal.com_Casse_brique_game_Maker_spr_mur_0.xpm
 
-NO ./textures/north_texture.xpm
-SO ./textures/south_texture.xpm
-WE ./textures/weast_texture.xpm
-EA ./textures/east_texture.xpm
-
-F 165,82,45
+F 80,60,30
 C 135,206,235
 
 1111111111111111111111111
 1000000000110000000000001
 1011000001110000000000001
 1001000000000000000000001
-111111111011000001110000000000001
 100000000011000001110111111111111
 11110111111111011100000010001
 11110111111111011101010010001

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 14:14:00 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/26 15:23:14 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:27:38 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ void    *check_ceiling(t_game *game, char *str)
     int i;
 
     i = 0;
-    while (ft_isspace(str[i]) || str[i] == ',')
+    while (ft_isspace(str[i]) || str[i] == ',' || str[i] == 'C')
         i++;
      if (!ft_isdigit(str[i])|| !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->ceiling.r = ft_atoi(&str[i]);
     while (ft_isdigit(str[i]))
         i++;
     while (ft_isspace(str[i]) || str[i] == ',')
         i++;
     if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->ceiling.g = ft_atoi(&str[i]);
     while (ft_isdigit(str[i]))
         i++;
     while (ft_isspace(str[i]) || str[i] == ',')
         i++;
     if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->ceiling.b = ft_atoi(&str[i]);
     return (NULL);
 }
@@ -54,29 +54,24 @@ void    *check_floor(t_game *game, char *str)
     int i;
 
     i = 0;
-    while (ft_isspace(str[i]) || str[i] == ',')
+    while (ft_isspace(str[i]) || str[i] == ',' || str[i] == 'F')
         i++;
-    printf("str[i] = %c\n", str[i]);
-    printf("str[i] = %c\n", str[i + 1]);
     if (!ft_isdigit(str[i])|| !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->floor.r = ft_atoi(&str[i]);
     while (ft_isdigit(str[i]))
         i++;
-    printf("str[i] = %c\n", str[i]);
-    printf("str[i] = %c\n", str[i + 1]);
     while (ft_isspace(str[i]) || str[i] == ',')
         i++;
-    printf("str[i] = %c\n", str[i]);
     if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->floor.g = ft_atoi(&str[i]);
     while (ft_isdigit(str[i]))
         i++;
     while (ft_isspace(str[i]) || str[i] == ',')
         i++;
     if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
-        file_failure(game, "Is not a digit or RGB error\n");
+        file_failure(game, "is not a digit or RGB error\n");
     game->floor.b = ft_atoi(&str[i]);
     return (NULL);
 }

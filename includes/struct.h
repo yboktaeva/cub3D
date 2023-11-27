@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:27:24 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/26 12:43:18 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:45:14 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,11 @@ typedef struct s_txt
 
 typedef struct s_data
 {
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
 	char	**map;
-
+	int	map_line; //w
+	int row_max; //h
 }			t_data;
 
 typedef struct s_game

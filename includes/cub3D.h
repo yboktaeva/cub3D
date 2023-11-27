@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/26 14:12:17 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:01:25 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@
 **INIT
 */
 void    init_struct(t_game *game);
-void    init_window(t_game *game);
+void    init_img(t_img *img);
 void    check_args(int argc, char **argv);
 void    init_data(t_data *data);
 void    init_trgb(t_rgb *trgb);
-void    init_img(t_img *img);
 void    init_txt(t_txt *txt);
+void    init_map(t_map *map);
 void    init_texture_files(t_game *game);
-
+void    init_window(t_game *game);
 /*
  **PARSE
  */
@@ -46,15 +46,21 @@ void	get_line(t_game *game, int i, int j, int fd);
 void    parse_cub(t_game *game, char *map_name);
 int     is_texture(char **strs);
 int     is_color(char **strs);
-int     valid_color(char **strs);
+int     map_line(char **file, int i);
+ssize_t	length_line(char *line_map);
+void	copy_into(t_data *data, char *map_line, int x, t_map *map);
+void	map_into_data(int line, t_game *game, char **map);
+int     check_elements(char **map);
+int     dfs(char **map, int i, int j, t_data *data);
+int     map_isclosed(char **map, t_data *data);
+void	parse_map(t_game *game);
 void	get_map(t_game *game);
 void    get_texture(t_game *game);
 void    get_color(t_game *game);
-void    open_texture(t_game *game);
-void    xpm_file(t_game *game);
 void    *check_ceiling(t_game *game, char *str);
 void    *check_floor(t_game *game, char *str);
-int     ft_isspace(char c);
+void    check_file(char **map, t_game *game);
+void    direction(char **map, int i, int j, t_game *game);
 /*
  **IMAGE
  */
@@ -67,7 +73,6 @@ void    draw_line(t_game *game, int w, float dist);
  **GAME
  */
 void    start_game(t_game *game);
-void    draw_floor_ceiling(t_game *game);
 /*
  **EVENTS
  */
@@ -85,5 +90,7 @@ void	free_texture(t_game *game);
  **UTILS
  */
 void    ft_error(char *str);
+int     ft_isspace(char c);
+int     empty_line(char *str);
 
 #endif
