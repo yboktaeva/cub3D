@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 18:19:38 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:13:33 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,31 @@ void    get_texture(t_game *game)
         while (strs[j])
         {
             if (strs[j][0] == 'N' && strs[j][1] == 'O')
+            {
                 game->path_nswe[0] = ft_substr(strs[j + 1], 0, ft_strlen(strs[j + 1]) - 1);
+                game->txt_index = 0;
+            }
             else if (strs[j][0] == 'S' && strs[j][1] == 'O')
+            {
                 game->path_nswe[1] = ft_substr(strs[j + 1], 0, ft_strlen(strs[j + 1]) - 1);
+                game->txt_index = 1;
+            }
             else if (strs[j][0] == 'W' && strs[j][1] == 'E')
+            {
                 game->path_nswe[2] = ft_substr(strs[j + 1], 0, ft_strlen(strs[j + 1]) - 1);
+                game->txt_index = 2;
+            }
             else if (strs[j][0] == 'E' && strs[j][1] == 'A')
+            {
                 game->path_nswe[3]= ft_substr(strs[j + 1], 0, ft_strlen(strs[j + 1]) - 1);
+                game->txt_index = 3;
+            }
             j++;
         }
         free_line(strs);
         i++;
     }
     game->path_nswe[4] = NULL;
-    game->txt_index += 4;
 }
 
 void    get_color(t_game *game)

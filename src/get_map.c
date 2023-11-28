@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/27 18:28:26 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:23:38 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	copy_into(t_data *data, char *map_line, int x, t_map *map)
 {
 	int i;
 	int j;
-
+	(void)map;
 	i = -1;
 	j = 0;
 	while (map_line[++i])
@@ -69,11 +69,11 @@ void	copy_into(t_data *data, char *map_line, int x, t_map *map)
 		else
 		{
 			data->map[x][j++] = map_line[i];
-			if (map_line[i] == 'N' || map_line[i] == 'S' || map_line[i] == 'W' || map_line[i] == 'E')
-			{
-				map->pos_x = x;
-				map->pos_y = j;
-			}
+			// if (map_line[i] == 'N' || map_line[i] == 'S' || map_line[i] == 'W' || map_line[i] == 'E')
+			// {
+			// 	map->pos_x = x;
+			// 	map->pos_y = j;
+			// }
 		}
 	}
 	data->map[x][j] = '\0';

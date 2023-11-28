@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 18:01:25 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:22:00 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,15 @@ int     rgb_to_hex(t_rgb rgb);
 void    draw_game(t_game *game);
 void    draw_floor_ceiling(t_game *game);
 void    draw_line(t_game *game, int w, float dist);
-//draw wall function (raycasting);
+float	ft_ray(t_game *game, float angle);
+void    ft_ray_casting(t_game *game);
 /*
  **GAME
  */
 void    start_game(t_game *game);
+void    ft_move(t_game *game, int direction);
+void    find_position(t_game *game);
+
 /*
  **EVENTS
  */
@@ -92,5 +96,7 @@ void	free_texture(t_game *game);
 void    ft_error(char *str);
 int     ft_isspace(char c);
 int     empty_line(char *str);
+float ft_sign(float n);
+
 
 #endif

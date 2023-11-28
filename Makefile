@@ -6,7 +6,7 @@
 #    By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 13:34:14 by yuboktae          #+#    #+#              #
-#    Updated: 2023/11/27 10:43:39 by yuboktae         ###   ########.fr        #
+#    Updated: 2023/11/28 14:51:32 by yuboktae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT_PATH	=	libft/
 MLX_PATH	=	minilibx-linux/
 SRC_FILES	=	main.c init_img.c get_cub_file.c start_game.c key_events.c ft_error.c \
 				draw_game.c destroy_game.c mlx_utils.c parsing.c parse_utils.c \
-				parse_map.c get_data.c check_rgb.c get_map.c
+				parse_map.c get_data.c check_rgb.c get_map.c ray_casting.c 
 
 
 INC			=	$(addprefix -I, $(INC_DIR))

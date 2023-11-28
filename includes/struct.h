@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:27:24 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 17:45:14 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:24:11 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,47 @@
 
 # define WIDTH 1280
 # define HEIGHT 1280
+# define M_PI 3.14159265358979323846
+# define ARROW_UP 65362
+# define ARROW_DOWN 65364
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define FOV M_PI / 3
 
 typedef struct s_map
 {
-	double pos_x;   // player position
-	double pos_y;   // player position
-	double dir_x;   // player direction
-	double dir_y;   // player direction
-	double plane_x; // camera plane
-	double plane_y; // camera plane
+	float view_angle; // player's view angle
+	float pos_x;   // player position
+	float pos_y;   // player position
+	float dir_x;   // player direction
+	float dir_y;   // player direction
+	float plane_x; // camera plane
+	float plane_y; // camera plane
 	int map_x;      // map position
 	int map_y;      // map position
 	int step_x;     // step and side dist
 	int step_y;     // step and side dist
 }			t_map;
+
+typedef struct s_ray
+{
+	float dir_x; 
+	float dir_y;
+	int step_x;
+	int step_y;
+	float vert_x;
+	float vert_y;
+	float horz_y; 
+	float horz_x;
+	float vert_dist;
+	float horz_dist;
+	float vert_w;
+	float horz_w;
+}			t_ray;
 
 typedef struct s_img
 {
@@ -79,6 +106,7 @@ typedef struct s_game
 	int		txt_height;
 	t_img	img;
 	t_map	map;
+	t_ray	ray;
 	t_data	data;
     t_rgb   floor;
     t_rgb   ceiling;
