@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:41:14 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 17:49:32 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 20:07:55 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void   init_txt(t_txt *txt)
     txt->bpp = 0;
     txt->endian = 0;
     txt->line_len = 0;
-    txt->width = 800;
-    txt->height = 800;
+    txt->width = 0;
+    txt->height = 0;
 }
 
 void	init_data(t_data *data)
@@ -70,8 +70,8 @@ void    init_struct(t_game *game)
     game->win = NULL;
     game->file = NULL;
     game->txt_index = 0;
-    game->txt_width = 0;
-    game->txt_height = 0;
+    game->txt_width = 80;
+    game->txt_height = 80;
     init_img(&game->img);
     init_map(&game->map);
     if ((game->txt = (t_txt *)malloc(sizeof(t_txt) * 4)) == NULL)
@@ -82,7 +82,6 @@ void    init_struct(t_game *game)
     while (++i < 4)
     {
         game->txt[i].img = NULL;
-        game->txt[i].addr = NULL;
     }
 	init_data(&game->data);
 	init_trgb(&game->ceiling);

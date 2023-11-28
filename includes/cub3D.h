@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 15:22:00 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:25:36 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int     is_texture(char **strs);
 int     is_color(char **strs);
 int     map_line(char **file, int i);
 ssize_t	length_line(char *line_map);
-void	copy_into(t_data *data, char *map_line, int x, t_map *map);
+void	copy_into(t_data *data, char *map_line, int x);
 void	map_into_data(int line, t_game *game, char **map);
 int     check_elements(char **map);
 int     dfs(char **map, int i, int j, t_data *data);

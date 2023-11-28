@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:31:41 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 15:11:25 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:47:12 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void find_position(t_game *game)
         {
             if (ft_strchr("NSEW", game->data.map[i][j]))
             {
-                game->map.pos_x = (float)j + 0.5f;
-                game->map.pos_y = (float)i + 0.5f;
+                game->map.pos_x = (float)j + 0.2f;
+                game->map.pos_y = (float)i + 0.2f;
                 find_angle_view(game->data.map[i][j], game);
                 return ;
             }

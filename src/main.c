@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:52:13 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/26 13:00:02 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:41:30 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,7 @@ int main(int argc, char **argv)
 
     check_args(argc, argv);
     init_struct(&game);
-    parse_cub(&game, argv[1]); //parsing file textures colors map)
-	// for (int k = 0; game.file[k] != NULL; k++)
-	// {
-    // 	printf("game->file[%d]: %s\n", 0, game.file[k]);
-	// }
-	start_game(&game); //start game
-	// free_line(game.file);
-	// free_data(&game.data);
-	// free_texture(&game);
+    parse_cub(&game, argv[1]);
+	start_game(&game);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:44:03 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 15:27:36 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 20:19:28 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void    ray_init(t_game *game, t_ray *ray, float angle)
 {
-    ray->dir_x = cos(angle) * 0.1;
-    ray->dir_y = sin(angle) * 0.1;
+    ray->dir_x = cos(angle);
+    ray->dir_y = sin(angle);
     ray->step_x = ft_sign(ray->dir_x);
     ray->step_y = ft_sign(ray->dir_y);
     ray->vert_x = (int)game->map.pos_x;
@@ -26,14 +26,14 @@ static void    ray_init(t_game *game, t_ray *ray, float angle)
         ray->horz_y += 1.0f;
 }
 
-float ft_sign(float n) {
-    if (n > 0) {
-        return 1.0f;
-    } else if (n < 0) {
-        return -1.0f;
-    } else {
-        return 0.0f;
-    }
+float ft_sign(float n)
+{
+    if (n > 0)
+        return (1.0f);
+    else if (n < 0)
+        return (-1.0f);
+    else
+        return (0.0f);
 }
 
 static void    next_step_ray(t_game *game, t_ray *ray)
@@ -44,18 +44,20 @@ static void    next_step_ray(t_game *game, t_ray *ray)
         ray->vert_dist = sqrt(pow(game->map.pos_x - ray->vert_x, 2.0) + pow(game->map.pos_y - ray->vert_y, 2.0));
         ray->vert_w = ray->vert_y - (int)ray->vert_y;
         if (ray->step_x > 0)
-            ray->vert_w = 1.0f - ray->vert_w;
+            ray->vert_w = 1 - ray->vert_w;
     }
-    else    ray->vert_dist = INFINITY;
+    else
+        ray->vert_dist = INFINITY;
     if (ray->step_y != 0)
     {
         ray->horz_x = game->map.pos_x + ray->dir_x / ray->dir_y * (ray->horz_y - game->map.pos_y);
         ray->horz_dist = sqrt(pow(game->map.pos_x - ray->horz_x, 2.0) + pow(game->map.pos_y - ray->horz_y, 2.0));
         ray->horz_w = ray->horz_x - (int)ray->horz_x;
         if (ray->step_y > 0)
-            ray->horz_w = 1.0f - ray->horz_w;
+            ray->horz_w = 1 - ray->horz_w;
     }
-    else    ray->horz_dist = INFINITY;
+    else
+        ray->horz_dist = INFINITY;
 }
 
 static float   save_color(t_game *game, float dist, int color_idx, float w)
@@ -95,13 +97,12 @@ void    ft_ray_casting(t_game *game)
     int    x;
     float  dv;
     float  v;
-
-    v = game->map.view_angle - (FOV / 2);
+    v = game->map.view_angle - FOV / 2;
     dv = FOV / (WIDTH - 1);
     x = -1;
     while (++x < WIDTH)
     {
-        draw_line(game, x, ft_ray(game, v) * cos(v - game->map.view_angle)); //against fish eye effect
+        draw_line(game, x, ft_ray(game, v) * cos(game->map.view_angle - v)); //against fish eye effect
         v += dv;
     }
 }

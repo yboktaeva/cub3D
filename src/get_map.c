@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/28 15:23:38 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:25:18 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ ssize_t	length_line(char *line_map)
 	return (length);
 }
 
-void	copy_into(t_data *data, char *map_line, int x, t_map *map)
+void	copy_into(t_data *data, char *map_line, int x)
 {
 	int i;
 	int j;
-	(void)map;
 	i = -1;
 	j = 0;
 	while (map_line[++i])
@@ -67,14 +66,7 @@ void	copy_into(t_data *data, char *map_line, int x, t_map *map)
 			data->map[x][j++] = ' ';
 		}
 		else
-		{
 			data->map[x][j++] = map_line[i];
-			// if (map_line[i] == 'N' || map_line[i] == 'S' || map_line[i] == 'W' || map_line[i] == 'E')
-			// {
-			// 	map->pos_x = x;
-			// 	map->pos_y = j;
-			// }
-		}
 	}
 	data->map[x][j] = '\0';
 }
@@ -91,7 +83,7 @@ void	map_into_data(int line, t_game *game, char **map)
 		game->data.map[i] = malloc(sizeof(char) * (length_line(map[i]) + 1));
 		if (!game->data.map[i])
 			file_failure(game, "malloc failure\n");
-		copy_into(&game->data, map[i], i, &game->map);
+		copy_into(&game->data, map[i], i);
 		if (ft_strlen(game->data.map[i]) > length_max)
 			length_max = ft_strlen(game->data.map[i]);
 		i++;

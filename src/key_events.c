@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:36:38 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 15:05:13 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:04:56 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	key_press(int keysym, t_game *game)
 		ft_move(game, 1);
 	else
 		return (0);
+	mlx_destroy_image(game->mlx, game->img.img);
 	draw_game(game);
 	return (0);
 }
@@ -53,9 +54,8 @@ void	ft_move(t_game *game, int direction)
 	float	angle;
 	
 	angle = game->map.view_angle + direction * M_PI / 2;
-	dist_x = cos(angle);
-	dist_y = sin(angle);
-	//dist = sqrt(dist_x * dist_x + dist_y * dist_y);
+	dist_x = 0.1f * cos(angle);
+	dist_y = 0.1f * sin(angle);
 	dist = ft_ray(game, ft_sign(dist_y) * M_PI / 2);
 	if (dist * dist < dist_y * dist_y)
 		dist_y = 0.0f; // if there is a wall, then the distance is 0 vertically
