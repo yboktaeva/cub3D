@@ -6,18 +6,55 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:21:27 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 15:37:28 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:50:40 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
+int	is_fcvalid(char *str, char c)
 {
-	char	*dst;
+	int	i;
 
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-		return ;
-	dst = game->img.addr + (y * game->img.line_len + x * (game->img.bpp / 8));
-	*(unsigned int *)dst = color;
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	i++;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	if (str[i] && str[i] == ',')
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isprint(str[i]) || str[i] == ' ' || ft_isdigit(str[i])
+			|| str[i] == ',')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	empty_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isprint(str[i]) || str[i] == ' ')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	init_path_nswe(t_game *game)
+{
+	game->path_nswe[0] = NULL;
+	game->path_nswe[1] = NULL;
+	game->path_nswe[2] = NULL;
+	game->path_nswe[3] = NULL;
+	return (-1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cqin <cqin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/28 18:33:16 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:13:29 by cqin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,8 @@ int	map_isclosed(char **map, t_data *data)
 	return (0);
 }
 
-void	init_mapdir(t_map *map, char **maps)
+void	init_mapdir(t_map *map, char **maps, int i)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
 	while (maps[i])
 	{
 		if (ft_strchr(maps[i], 'N'))
@@ -132,5 +127,5 @@ void	parse_map(t_game *game)
 		file_failure(game, "character not accepted or not only one player\n");
 	if (map_isclosed(map_duplicate, &game->data) == 1)
 		file_failure(game, "map not closed\n");
-	init_mapdir(&game->map, game->data.map);
+	init_mapdir(&game->map, game->data.map, 0);
 }

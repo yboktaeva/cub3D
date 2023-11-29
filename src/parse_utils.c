@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:36:21 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 17:42:17 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:53:00 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,28 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-float ft_sign(float n)
+float	ft_sign(float n)
 {
-    if (n > 0)
-        return (1.0f);
-    else if (n < 0)
-        return (-1.0f);
-    else
-        return (0.0f);
+	if (n > 0)
+		return (1.0f);
+	else if (n < 0)
+		return (-1.0f);
+	else
+		return (0.0f);
 }
 
-int        str_digit(char *str)
+int	str_digit(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-        if (ft_isspace(str[i]) || ft_isdigit(str[i]) || str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'A')
-            i++;
-        else
-            return (0);
-    }
-    return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isspace(str[i]) || ft_isdigit(str[i]) || str[i] == 'N'
+			|| str[i] == 'S' || str[i] == 'E' || str[i] == 'A')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }

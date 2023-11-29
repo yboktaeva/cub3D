@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:44:03 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 17:56:16 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:33:55 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,14 @@ float	ft_ray(t_game *game, float angle)
 
 void	ft_ray_casting(t_game *game)
 {
-	int		x;
-	float	dv;
-	float	angle;
-	static const float	g_fov = 60 * M_PI / 180;
-	
-	angle = game->map.view_angle - g_fov / 2;
-	dv = g_fov / (WIDTH - 1);
+	int					x;
+	float				dv;
+	float				angle;
+	static float		fov;
+
+	fov = 60 * M_PI / 180;
+	angle = game->map.view_angle - fov / 2;
+	dv = fov / (WIDTH - 1);
 	x = -1;
 	while (++x < WIDTH)
 	{

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:44:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 15:21:51 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:58:39 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ void	free_texture(t_game *game)
 	int	i;
 
 	i = 0;
+	if (game->path_nswe[0])
+		free(game->path_nswe[0]);
+	if (game->path_nswe[1])
+		free(game->path_nswe[1]);
+	if (game->path_nswe[2])
+		free(game->path_nswe[2]);
+	if (game->path_nswe[3])
+		free(game->path_nswe[3]);
 	while (i < 4)
 	{
-		if (game->path_nswe && game->path_nswe[i])
-			free(game->path_nswe[i]);
 		if (game->txt[i].img)
 			mlx_destroy_image(game->mlx, game->txt[i].img);
 		i++;
