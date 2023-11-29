@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:41:14 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 20:07:55 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:08:02 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void    init_struct(t_game *game)
     game->win = NULL;
     game->file = NULL;
     game->txt_index = 0;
-    game->txt_width = 80;
-    game->txt_height = 80;
+    // game->txt_width = 0;
+    // game->txt_height = 0;
     init_img(&game->img);
     init_map(&game->map);
     if ((game->txt = (t_txt *)malloc(sizeof(t_txt) * 4)) == NULL)

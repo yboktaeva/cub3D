@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:27:24 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 19:33:01 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:23:52 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define FOV M_PI / 3
+# define FOV 60 * M_PI / 180
 
 typedef struct s_map
 {
@@ -43,18 +43,18 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	float dir_x; 
-	float dir_y;
-	int step_x;
-	int step_y;
-	float vert_x;
-	float vert_y;
-	float horz_y; 
-	float horz_x;
-	float vert_dist;
-	float horz_dist;
-	float vert_w;
-	float horz_w;
+	float dir_x; // ray direction
+	float dir_y; // ray direction
+	int step_x; // step and side dist
+	int step_y; // step and side dist
+	float vert_x; // vertical wall hit
+	float vert_y; // vertical wall hit
+	float horz_y; // horizontal wall hit
+	float horz_x; // horizontal wall hit
+	float vert_dist; // distance from player to vertical wall hit
+	float horz_dist; // distance from player to horizontal wall hit
+	float vert_w; // vertical wall hit
+	float horz_w; // horizontal wall hit
 }			t_ray;
 
 typedef struct s_img
@@ -102,8 +102,8 @@ typedef struct s_game
 	char	**file;
     char    **path_nswe;
     int     txt_index;
-	int		txt_width;
-	int		txt_height;
+	float		txt_width;
+	float		txt_height;
 	t_img	img;
 	t_map	map;
 	t_ray	ray;

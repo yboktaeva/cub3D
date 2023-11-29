@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 18:05:03 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:06:50 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,4 @@ void    init_texture_files(t_game *game)
             file_failure(game, "wall texture file failure\n");
         game->txt[i].addr = mlx_get_data_addr(game->txt[i].img, &game->txt[i].bpp, &game->txt[i].line_len, &game->txt[i].endian);
     }
-    // game->txt[0].img = mlx_xpm_file_to_image(game->mlx, game->path_nswe[0], &game->txt[0].width, &game->txt[0].height);
-    // game->txt[1].img = mlx_xpm_file_to_image(game->mlx, game->path_nswe[1], &game->txt[1].width, &game->txt[1].height);
-    // game->txt[2].img = mlx_xpm_file_to_image(game->mlx, game->path_nswe[2], &game->txt[2].width, &game->txt[2].height);
-    // game->txt[3].img = mlx_xpm_file_to_image(game->mlx, game->path_nswe[3], &game->txt[3].width, &game->txt[3].height);
-    // if (game->txt[0].img == NULL || game->txt[1].img == NULL || game->txt[2].img == NULL || game->txt[3].img == NULL)
-    //     file_failure(game, "wall texture file failure\n");
-    // game->txt[0].addr = mlx_get_data_addr(game->txt[0].img, &game->txt[0].bpp, &game->txt[0].line_len, &game->txt[0].endian);
-    // game->txt[1].addr = mlx_get_data_addr(game->txt[1].img, &game->txt[1].bpp, &game->txt[1].line_len, &game->txt[1].endian);
-    // game->txt[2].addr = mlx_get_data_addr(game->txt[2].img, &game->txt[2].bpp, &game->txt[2].line_len, &game->txt[2].endian);
-    // game->txt[3].addr = mlx_get_data_addr(game->txt[3].img, &game->txt[3].bpp, &game->txt[3].line_len, &game->txt[3].endian);
 }

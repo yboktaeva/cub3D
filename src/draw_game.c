@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:09:31 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 20:42:03 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:06:14 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ void    draw_floor_ceiling(t_game *game)
 
 void    draw_line(t_game *game, int w, float dist) //dist -> distance from player to projection plane
 {
-    unsigned int *dst;
-    unsigned int *src;
-    unsigned int h;
-    float src_factor;
-    float dst_shift;
+    unsigned int *dst; // destination
+    unsigned int *src; // source
+    unsigned int h; // projection plane height
+    float src_factor; // source factor for texture
+    float dst_shift; // destination shift for texture (texture height / projection plane height)
 
-    h  = (float)HEIGHT / dist;
+    h  = (float)HEIGHT / dist; // projection plane height, if dist is bigger, h is smaller
     src_factor = 0.0f;
-    dst_shift = (float)game->txt[game->txt_index].height / h;
-    if (h > HEIGHT)
+    dst_shift = (float)game->txt[game->txt_index].height / h; // destination shift for texture = texture height / projection plane height
+    if (h > HEIGHT) // if projection plane height is bigger than screen height
     {
-        src_factor = 0.5f * (h - HEIGHT) / (h * game->txt[game->txt_index].height);
-        h = HEIGHT;
+        src_factor = 0.5f * (h - HEIGHT) / (h * game->txt[game->txt_index].height); // source factor for texture = 0.5 * (projection plane height - screen height) / (projection plane height * texture height)
+        h = HEIGHT; // projection plane height = screen height
     }
-    src = (unsigned int *)game->txt[game->txt_index].addr;
-    src += (int)((float)game->txt_width * game->txt[game->txt_index].width);
-    dst = (unsigned int *)game->img.addr + w + (HEIGHT - h) / 2 * WIDTH;
-    while (h-- > 0)
+    src = (unsigned int *)game->txt[game->txt_index].addr; // source = texture address
+    src += (int)((float)game->txt_width * game->txt[game->txt_index].width); // source += texture width * texture height
+    dst = (unsigned int *)game->img.addr + w + (HEIGHT - h) / 2 * WIDTH; // destination = image address + w + (screen height - projection plane height) / 2 * screen width
+    while (h-- > 0) // while projection plane height is bigger than 0
     {
-        *dst = *(src + ((int)src_factor) * game->txt[game->txt_index].width);
-        dst += WIDTH;
-        src_factor += dst_shift;
+        *dst = *(src + ((int)src_factor) * game->txt[game->txt_index].width); // destination = source + (int)source factor * texture width
+        dst += WIDTH; // destination += screen width
+        src_factor += dst_shift; // source factor += destination shift
     }
 }
