@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:44:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 17:46:43 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:43:04 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ void	destroy_game(t_game *game)
 {
 	if (game->file)
         free_line(game->file);
-	free_data(&game->data);
 	free_texture(game);
+	free_data(&game->data);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
-	mlx_destroy_display(game->mlx);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
 	free(game->mlx);
 }
 
 void	file_failure(t_game *game, char *msg)
 {
-	if (game->mlx != NULL)
-		destroy_game(game);
+	destroy_game(game);
 	ft_error(msg);
 }
 

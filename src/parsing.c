@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/27 18:26:52 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:44:26 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void    check_file(char **map, t_game *game)
             if (ft_strlen(map[i]) > 4 && ((map[i][j] == 'N' && map[i][j + 1] == 'O') ||
                 (map[i][j] == 'S' && map[i][j + 1] == 'O') || (map[i][j] == 'E' && map[i][j + 1] == 'A') ||
                 (map[i][j] == 'W' && map[i][j + 1] == 'E')) && (map[i][j + 2] == ' ' || map[i][j + 2] == '\t'))
-                {
-                    direction(game->file, i, 3, game);
-                    i += 3;
-                    break;
-                }
+            {
+                direction(game->file, i, 3, game);
+                i += 3;
+                break;
+            }
             else if (ft_strlen(map[i]) > 3 && (map[i][j] == 'F' || map[i][j] == 'C') && (map[i][j + 1] == ' ' || map[i][j + 1] == '\t'))
 			{
 				direction(game->file, i, 1, game);

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:31:41 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 15:47:12 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:31:15 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void    init_window(t_game *game)
 void    start_game(t_game *game)
 {
     init_window(game);
-    find_position(game); // check player's position
-    draw_game(game); // draw game
+    find_position(game);
+    draw_game(game);
     mlx_hook(game->win, DestroyNotify, 0, &close_game, game);
     mlx_hook(game->win, KeyPress, KeyPressMask, &key_press, game);
     mlx_loop(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:27:24 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 12:23:52 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:45:39 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ typedef struct s_data
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
 	char	**map;
-	int	map_line; //w
-	int row_max; //h
+	int	map_line;
+	int row_max;
 }			t_data;
 
 typedef struct s_game
@@ -102,8 +102,8 @@ typedef struct s_game
 	char	**file;
     char    **path_nswe;
     int     txt_index;
-	float		txt_width;
-	float		txt_height;
+	float	txt_width;
+	float	txt_height;
 	t_img	img;
 	t_map	map;
 	t_ray	ray;
