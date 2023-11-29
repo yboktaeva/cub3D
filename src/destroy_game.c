@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:44:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 13:43:04 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:21:51 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	destroy_game(t_game *game)
 {
 	if (game->file)
-        free_line(game->file);
+		free_line(game->file);
 	free_texture(game);
 	free_data(&game->data);
 	if (game->win)
@@ -35,7 +35,7 @@ void	file_failure(t_game *game, char *msg)
 
 void	free_line(char **line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line && line[i])
@@ -44,7 +44,7 @@ void	free_line(char **line)
 		i++;
 	}
 	free(line);
-    line = NULL;
+	line = NULL;
 }
 
 void	free_data(t_data *data)
@@ -55,7 +55,7 @@ void	free_data(t_data *data)
 
 void	free_texture(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)

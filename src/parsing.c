@@ -6,16 +6,39 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 13:44:26 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:44:07 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+int		is_fcvalid(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	i++;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	if (str[i] && str[i] == ',')
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isprint(str[i]) || str[i] == ' ' || ft_isdigit(str[i]) || str[i] == ',')
+			i++;
+		else
+			return(0);
+	}
+	return (1);
+}
+
 int        empty_line(char *str)
 {
-    int i = 0;
+    int i;
 
+	i = 0;
     while (str[i])
     {
         if (!ft_isprint(str[i]) || str[i] == ' ')
@@ -71,18 +94,20 @@ void    check_file(char **map, t_game *game)
             {
                 direction(game->file, i, 3, game);
                 i += 3;
-                break;
+                break ;
             }
             else if (ft_strlen(map[i]) > 3 && (map[i][j] == 'F' || map[i][j] == 'C') && (map[i][j + 1] == ' ' || map[i][j + 1] == '\t'))
 			{
+				if (!is_fcvalid(map[i], map[i][j]))
+					file_failure(game, "floor or celling no conform\n");
 				direction(game->file, i, 1, game);
 				i +=1;
-				break;
+				break ;
 			}
             else if (!empty_line(map[i]) && !ft_isdigit(map[i][j]))
                 file_failure(game, "file not conform\n");
 			else
-				break;
+				break ;
         }
         i++;
     }
@@ -92,6 +117,7 @@ void	parse_cub(t_game *game, char *map_name)
 {
 	get_file(map_name, game);
 	check_file(game->file, game);
+	only_onemap(game->file, game);
 	get_map(game);
 	parse_map(game);
 	if (is_texture(game->file))

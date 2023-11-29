@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/28 17:25:18 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:53:54 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ ssize_t	length_line(char *line_map)
 
 void	copy_into(t_data *data, char *map_line, int x)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	i = -1;
 	j = 0;
 	while (map_line[++i])
@@ -105,7 +106,7 @@ void	get_map(t_game *game)
 	{
 		j = 0;
 		while (game->file[i][j] == ' ' || game->file[i][j] == '\t'
-			|| game->file[i][j] == '\n')
+				|| game->file[i][j] == '\n')
 			j++;
 		if (ft_isdigit(game->file[i][j]))
 			break ;

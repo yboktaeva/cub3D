@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 17:25:36 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:43:07 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,66 +26,69 @@
 # include <stdlib.h>
 
 /*
-**INIT
-*/
-void    init_struct(t_game *game);
-void    init_img(t_img *img);
-void    check_args(int argc, char **argv);
-void    init_data(t_data *data);
-void    init_trgb(t_rgb *trgb);
-void    init_txt(t_txt *txt);
-void    init_map(t_map *map);
-void    init_texture_files(t_game *game);
-void    init_window(t_game *game);
+ **INIT
+ */
+void	init_struct(t_game *game);
+void	init_img(t_img *img);
+void	check_args(int argc, char **argv);
+void	init_data(t_data *data);
+void	init_trgb(t_rgb *trgb);
+void	init_txt(t_txt *txt);
+void	init_map(t_map *map);
+void	init_texture_files(t_game *game);
+void	init_window(t_game *game);
 /*
  **PARSE
  */
-int     get_fileline(char *file, t_game *game);
-void    get_file(char *path, t_game *game);
+int		get_fileline(char *file, t_game *game);
+void	get_file(char *path, t_game *game);
 void	get_line(t_game *game, int i, int j, int fd);
-void    parse_cub(t_game *game, char *map_name);
-int     is_texture(char **strs);
-int     is_color(char **strs);
-int     map_line(char **file, int i);
+void	parse_cub(t_game *game, char *map_name);
+int		is_texture(char **strs);
+int		is_color(char **strs);
+int		map_line(char **file, int i);
 ssize_t	length_line(char *line_map);
 void	copy_into(t_data *data, char *map_line, int x);
 void	map_into_data(int line, t_game *game, char **map);
-int     check_elements(char **map);
-int     dfs(char **map, int i, int j, t_data *data);
-int     map_isclosed(char **map, t_data *data);
+int		check_elements(char **map);
+int		dfs(char **map, int i, int j, t_data *data);
+int		map_isclosed(char **map, t_data *data);
 void	parse_map(t_game *game);
 void	get_map(t_game *game);
-void    get_texture(t_game *game);
-void    get_color(t_game *game);
-void    *check_ceiling(t_game *game, char *str);
-void    *check_floor(t_game *game, char *str);
-void    check_file(char **map, t_game *game);
-void    direction(char **map, int i, int j, t_game *game);
+void	get_texture(t_game *game);
+void	get_color(t_game *game);
+void	*check_ceiling(t_game *game, char *str);
+void	*check_floor(t_game *game, char *str);
+void	check_file(char **map, t_game *game);
+void	direction(char **map, int i, int j, t_game *game);
+int		is_fcvalid(char *str, char c);
+int		skip_spacecomma(int i, char *str, t_game *game);
+int     str_digit(char *str);
+void    only_onemap(char **file, t_game *game);
 /*
  **IMAGE
  */
-int     rgb_to_hex(t_rgb rgb);
-void    draw_game(t_game *game);
-void    draw_floor_ceiling(t_game *game);
-void    draw_line(t_game *game, int w, float dist);
+int		rgb_to_hex(t_rgb rgb);
+void	draw_game(t_game *game);
+void	draw_floor_ceiling(t_game *game);
+void	draw_line(t_game *game, int w, float dist);
 float	ft_ray(t_game *game, float angle);
-void    ft_ray_casting(t_game *game);
+void	ft_ray_casting(t_game *game);
 /*
  **GAME
  */
-void    start_game(t_game *game);
-void    ft_move(t_game *game, int direction);
-void    find_position(t_game *game);
-
+void	start_game(t_game *game);
+void	ft_move(t_game *game, int direction);
+void	find_position(t_game *game);
 /*
  **EVENTS
  */
-int     close_game(t_game *game);
-int     key_press(int keysym, t_game *game);
+int		close_game(t_game *game);
+int		key_press(int keysym, t_game *game);
 /*
  **FREE
  */
-void    destroy_game(t_game *game);
+void	destroy_game(t_game *game);
 void	file_failure(t_game *game, char *msg);
 void	free_line(char **line);
 void	free_data(t_data *data);
@@ -93,10 +96,9 @@ void	free_texture(t_game *game);
 /*
  **UTILS
  */
-void    ft_error(char *str);
-int     ft_isspace(char c);
-int     empty_line(char *str);
-float ft_sign(float n);
-
+void	ft_error(char *str);
+int		ft_isspace(char c);
+int		empty_line(char *str);
+float	ft_sign(float n);
 
 #endif

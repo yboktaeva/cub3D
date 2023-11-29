@@ -6,19 +6,19 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:52:13 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/28 18:41:30 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:18:06 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 /*We check if we have 2argc,
-the extension file finished by .cub and check if the file exist
-If one of these 3 are not ok ,the program stop*/
+  the extension file finished by .cub and check if the file exist
+  If one of these 3 are not ok ,the program stop*/
 void	check_args(int argc, char **argv)
 {
 	size_t	len;
-	int	fd;
+	int		fd;
 
 	if (argc != 2)
 		ft_error("Invalid number of arguments\n");
@@ -30,13 +30,38 @@ void	check_args(int argc, char **argv)
 		ft_error("File not exist\n");
 }
 
-int main(int argc, char **argv)
+void	init_struct(t_game *game)
 {
-    t_game game;
+	int	i;
 
-    check_args(argc, argv);
-    init_struct(&game);
-    parse_cub(&game, argv[1]);
+	game->mlx = NULL;
+	game->win = NULL;
+	game->file = NULL;
+	game->txt_index = 0;
+	game->txt_width = 0.0f;
+	game->txt_height = 0.0f;
+	init_img(&game->img);
+	init_map(&game->map);
+	game->txt = (t_txt *)malloc(sizeof(t_txt) * 4);
+	if (game->txt == NULL)
+		file_failure(game, "malloc failed for txt");
+	game->path_nswe = NULL;
+	init_txt(game->txt);
+	i = -1;
+	while (++i < 4)
+		game->txt[i].img = NULL;
+	init_data(&game->data);
+	init_trgb(&game->ceiling);
+	init_trgb(&game->floor);
+}
+
+int	main(int argc, char **argv)
+{
+	t_game	game;
+
+	check_args(argc, argv);
+	init_struct(&game);
+	parse_cub(&game, argv[1]);
 	start_game(&game);
-    return (0);
+	return (0);
 }

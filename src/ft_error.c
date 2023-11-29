@@ -6,15 +6,15 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:13:50 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/22 15:34:00 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:51:28 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void    ft_error(char *str)
+void	ft_error(char *str)
 {
-    ft_putstr_fd("Error\n", 2);
-    ft_putstr_fd(str, 2);
-    exit(1);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	exit(1);
 }
