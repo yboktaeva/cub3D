@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:41:14 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 15:35:02 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:15:29 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	init_img(t_img *img)
 
 void	init_trgb(t_rgb *trgb)
 {
-	trgb->r = 0;
-	trgb->g = 0;
-	trgb->b = 0;
+	trgb->r = -1;
+	trgb->g = -1;
+	trgb->b = -1;
 }
 
 void	init_txt(t_txt *txt)

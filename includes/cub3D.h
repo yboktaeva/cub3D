@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 19:39:33 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:53:46 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	check_file(char **map, t_game *game);
 void	direction(char **map, int i, int j, t_game *game);
 int		is_fcvalid(char *str, char c);
 int		skip_spacecomma(int i, char *str, t_game *game);
-void    only_onemap(char **file, t_game *game);
-int	init_path_nswe(t_game *game);
+void	only_onemap(char **file, t_game *game);
+int		color_loop(t_game *game, char *str, char c, int floor);
 
 /*
  **IMAGE
@@ -101,6 +101,8 @@ void	ft_error(char *str);
 int		ft_isspace(char c);
 int		empty_line(char *str);
 float	ft_sign(float n);
-int     str_digit(char *str);
+int		str_digit(char *str);
+void	if_exist(t_game *game, int f);
+int		init_path_nswe(t_game *game);
 
 #endif

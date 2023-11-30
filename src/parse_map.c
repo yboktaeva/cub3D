@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cqin <cqin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:21:35 by cqin              #+#    #+#             */
-/*   Updated: 2023/11/29 18:13:29 by cqin             ###   ########.fr       */
+/*   Updated: 2023/11/30 12:50:19 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int	dfs(char **map, int i, int j, t_data *data)
 		return (0);
 	if (map[i][j] == '0')
 	{
-		if (((i + 1 <= data->map_line) && (j >= (int)ft_strlen(map[i + 1]) - 1))
-			|| (i - 1 >= 0 && (j >= (int)ft_strlen(map[i - 1]) - 1)))
+		if (((i + 1 <= data->map_line && j >= (int)ft_strlen(map[i + 1]) - 2)
+				|| j >= (int)ft_strlen(map[i]) - 2)
+			|| (i - 1 >= 0 && (j >= (int)ft_strlen(map[i - 1]) - 2)))
 			return (-1);
 	}
 	if (map[i][j] == '1' || map[i][j] == 'N' || map[i][j] == 'S'
@@ -75,10 +76,11 @@ int	map_isclosed(char **map, t_data *data)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == '0')
+			if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
 			{
-				if (i == 0 || i == (data->map_line - 1) || j == 0
-					|| j == (data->row_max - 1))
+				if (i == 0 || i == (data->map_line - 1) || j == 0 || j
+					== (data->row_max - 1) || j == (int)ft_strlen(map[i]) - 2)
 					return (1);
 				if (dfs(map, i, j, data) == -1)
 					return (1);

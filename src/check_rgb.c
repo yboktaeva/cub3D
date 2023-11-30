@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 14:14:00 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 18:48:11 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:47:05 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,26 @@ int	skip_spacecomma(int i, char *str, t_game *game)
 	return (i);
 }
 
-void	*check_ceiling(t_game *game, char *str)
+int	color_loop(t_game *game, char *str, char c, int floor)
 {
 	int	i;
 
 	i = 0;
-	while (ft_isspace(str[i]) || str[i] == ',' || str[i] == 'C')
+	if_exist(game, floor);
+	while (ft_isspace(str[i]))
 		i++;
+	if (str[i] == c)
+		i++;
+	while (ft_isspace(str[i]))
+		i++;
+	return (i);
+}
+
+void	*check_ceiling(t_game *game, char *str)
+{
+	int	i;
+
+	i = color_loop(game, str, 'C', 0);
 	if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
 		file_failure(game, "is not a digit or RGB error\n");
 	game->ceiling.r = ft_atoi(&str[i]);
@@ -66,9 +79,7 @@ void	*check_floor(t_game *game, char *str)
 {
 	int	i;
 
-	i = 0;
-	while (ft_isspace(str[i]) || str[i] == ',' || str[i] == 'F')
-		i++;
+	i = color_loop(game, str, 'F', 1);
 	if (!ft_isdigit(str[i]) || !check_rgb(&str[i]))
 		file_failure(game, "is not a digit or RGB error\n");
 	game->floor.r = ft_atoi(&str[i]);

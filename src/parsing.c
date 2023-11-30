@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 20:00:52 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:05:52 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	direction(char **map, int i, int j, t_game *game)
 			if (ft_strlen(map[i + 1]) > 4 && (((map[i + 1][k] == 'N' || (map[i
 								+ 1][k] == 'S')) && map[i + 1][k + 1] == 'O')
 					|| (map[i + 1][k] == 'E' && map[i + 1][k + 1] == 'A')
-					|| (map[i + 1][k] == 'W' && map[i + 1][k + 1] == 'E'))
-				&& (map[i + 1][k + 2] == ' ' || map[i + 1][k + 2] == '\t'))
+					|| (map[i + 1][k] == 'W' && map[i + 1][k + 1] == 'E')))
 				;
 			else
 				file_failure(game, "invalid texture file\n");
@@ -49,15 +48,14 @@ void	check_file2(char **map, t_game *game, int *i, int j)
 			j++;
 		if (ft_strlen(map[*i]) > 4 && (((map[*i][j] == 'N' || map[*i][j] == 'S')
 			&& map[*i][j + 1] == 'O') || (map[*i][j] == 'E' && map[*i][j
-			+ 1] == 'A') || (map[*i][j] == 'W' && map[*i][j + 1] == 'E'))
-			&& (map[*i][j + 2] == ' ' || map[*i][j + 2] == '\t'))
+			+ 1] == 'A') || (map[*i][j] == 'W' && map[*i][j + 1] == 'E')))
 		{
 			direction(game->file, *i, 3, game);
 			(*i) += 3;
 			break ;
 		}
 		else if (ft_strlen(map[*i]) > 3 && (map[*i][j] == 'F' || map[*i][j]
-			== 'C') && (map[*i][j + 1] == ' ' || map[*i][j + 1] == '\t'))
+			== 'C'))
 		{
 			direction(game->file, *i, 1, game);
 			(*i) += 1;

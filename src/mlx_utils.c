@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:21:27 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/29 19:50:40 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:48:54 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,14 @@ int	init_path_nswe(t_game *game)
 	game->path_nswe[2] = NULL;
 	game->path_nswe[3] = NULL;
 	return (-1);
+}
+
+void	if_exist(t_game *game, int f)
+{
+	if (f == 0 && game->ceiling.b != -1
+		&& game->ceiling.g != -1 && game->ceiling.r != -1)
+		file_failure(game, "ceiling color is duplicated\n");
+	if (f == 1 && game->floor.b != -1
+		&& game->floor.g != -1 && game->floor.r != -1)
+		file_failure(game, "floor color is duplicated\n");
 }
