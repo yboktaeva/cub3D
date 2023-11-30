@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 14:07:37 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:17:31 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	free_texture(t_game *game);
  */
 void	ft_error(char *str);
 int		ft_isspace(char c);
-int		empty_line(char *str);
+int		empty_line(char *str, int space);
 float	ft_sign(float n);
 int		str_digit(char *str);
 void	if_exist(t_game *game, int f);

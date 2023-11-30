@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 14:30:29 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:55:27 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	direction(char **map, int i, int j, t_game *game)
 	line_end = i + j;
 	while (i < line_end)
 	{
-		if (map[i + 1] == NULL || (map[i + 1] && empty_line(map[i + 1]) == 1))
+		if (map[i + 1] == NULL || (map[i + 1]
+				&& empty_line(map[i + 1], 1) == 1))
 			file_failure(game, "An empty line between or double elements\n");
 		k = 0;
 		if (j == 3)
@@ -61,7 +62,7 @@ void	check_file2(char **map, t_game *game, int *i, int j)
 			(*i) += 1;
 			break ;
 		}
-		else if (!empty_line(map[*i]) && !ft_isdigit(map[*i][j]))
+		else if (!empty_line(map[*i], 0) && !ft_isdigit(map[*i][j]))
 			file_failure(game, "file not conform\n");
 		else
 			break ;

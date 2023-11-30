@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:21:27 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 14:26:17 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:52:42 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,27 @@ int	is_fcvalid(char *str, char c)
 	return (1);
 }
 
-int	empty_line(char *str)
+int	empty_line(char *str, int space)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isprint(str[i]) || str[i] == ' ')
-			i++;
+		if (space == 1)
+		{
+			if (!ft_isprint(str[i]) || str[i] == ' ')
+				i++;
+			else
+				return (0);
+		}
 		else
-			return (0);
+		{
+			if (!ft_isprint(str[i]))
+				i++;
+			else
+				return (0);
+		}
 	}
 	return (1);
 }

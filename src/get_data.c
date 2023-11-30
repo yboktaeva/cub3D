@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 14:27:31 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:31:02 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	init_pathtexture(t_game *game, int index, int j, char *strs)
 	while (strs[k] && (ft_isprint(strs[k]) && strs[k] != ' '))
 			k++;
 	if (strs[k] != '\n')
-		file_failure(game, "too many texture files\n");
+		file_failure(game, "texture files fail\n");
 	if (strs[j])
 	{
 		if (!game->path_nswe[index])
 			game->path_nswe[index] = ft_substr(&strs[j], 0, k - j);
 		else
-			file_failure(game, "too many texture files\n");
+			file_failure(game, "texture files fail\n");
 	}
 	game->txt_index = index;
 }
@@ -115,7 +115,7 @@ void	only_onemap(char **file, t_game *game)
 			break ;
 		i++;
 	}
-	while (file[i] && (str_digit(file[i]) || empty_line(file[i])))
+	while (file[i] && (str_digit(file[i]) || empty_line(file[i], 0)))
 		i++;
 	if (file[i] != NULL)
 		file_failure(game, "map is not conform\n");

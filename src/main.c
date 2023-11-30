@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:52:13 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 14:25:47 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:19:24 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	check_args(char **argv)
 		free(prompt);
 		ft_error("File is empty\n");
 	}
-	while (prompt && empty_line(prompt))
+	while (prompt && empty_line(prompt, 1))
 	{
 		free(prompt);
 		prompt = get_next_line(fd);
