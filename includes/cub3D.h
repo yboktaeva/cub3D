@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:31:33 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 12:53:46 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:07:37 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
  */
 void	init_struct(t_game *game);
 void	init_img(t_img *img);
-void	check_args(int argc, char **argv);
+void	check_args(char **argv);
 void	init_data(t_data *data);
 void	init_trgb(t_rgb *trgb);
 void	init_txt(t_txt *txt);

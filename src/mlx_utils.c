@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:21:27 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 12:48:54 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:26:17 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int	empty_line(char *str)
 
 int	init_path_nswe(t_game *game)
 {
+	game->path_nswe = (char **)malloc(sizeof(char *) * (4 + 1));
+	if (!game->path_nswe)
+		file_failure(game, "malloc failed for path_nswe");
 	game->path_nswe[0] = NULL;
 	game->path_nswe[1] = NULL;
 	game->path_nswe[2] = NULL;

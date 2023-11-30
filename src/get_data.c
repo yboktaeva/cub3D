@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 12:47:22 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:27:31 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ void	get_texture(t_game *game, int i)
 {
 	int		j;
 
-	game->path_nswe = (char **)malloc(sizeof(char *) * (4 + 1));
-	if (!game->path_nswe)
-		file_failure(game, "malloc failed for path_nswe");
-	i = init_path_nswe(game);
+	i = -1;
 	while (game->file[++i])
 	{
 		j = 0;

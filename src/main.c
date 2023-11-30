@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:52:13 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 12:48:07 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:25:47 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
   the extension file finished by .cub and check if the file exist
   If one of these 3 are not ok ,the program stop*/
 
-void	check_args(int argc, char **argv)
+void	check_args(char **argv)
 {
 	char	*prompt;
 	int		fd;
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	len = ft_strlen(argv[1]);
 	if (ft_strcmp(&argv[1][len - ft_strlen(".cub")], ".cub"))
 		ft_error("Invalid file with format .cub\n");
-	check_args(argc, argv);
+	check_args(argv);
 	init_struct(&game);
 	parse_cub(&game, argv[1]);
 	start_game(&game);

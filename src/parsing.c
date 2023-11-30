@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 11:05:52 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:30:29 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	check_file(char **map, t_game *game)
 void	parse_cub(t_game *game, char *map_name)
 {
 	get_file(map_name, game);
+	init_path_nswe(game);
 	if (is_texture(game->file))
 		get_texture(game, 0);
 	if (is_color(game->file))
@@ -94,7 +95,7 @@ void	parse_cub(t_game *game, char *map_name)
 		game->data.ceiling_color = rgb_to_hex(game->ceiling);
 	}
 	else
-		file_failure(game, "no color found\n");
+		file_failure(game, "file not conform\n");
 	check_file(game->file, game);
 	only_onemap(game->file, game);
 	get_map(game);
