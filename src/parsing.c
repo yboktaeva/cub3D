@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:34 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 15:55:27 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/01 09:47:23 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ void	parse_cub(t_game *game, char *map_name)
 	only_onemap(game->file, game);
 	get_map(game);
 	parse_map(game);
-	if (game->data.ceiling_color == 0 || game->data.floor_color == 0
-		|| game->path_nswe == NULL || game->txt == NULL
+	if (game->path_nswe == NULL || game->txt == NULL
 		|| game->data.map == NULL)
 		file_failure(game, "file cub not conform\n");
 }

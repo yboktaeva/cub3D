@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:42:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/11/30 15:31:02 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:34:43 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_pathtexture(t_game *game, int index, int j, char *strs)
 	k = j;
 	while (strs[k] && (ft_isprint(strs[k]) && strs[k] != ' '))
 			k++;
-	if (strs[k] != '\n')
+	if (strs[k] != '\n' && strs[k] != ' ')
 		file_failure(game, "texture files fail\n");
 	if (strs[j])
 	{
